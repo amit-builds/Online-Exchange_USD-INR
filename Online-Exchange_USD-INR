@@ -1,0 +1,13 @@
+import requests
+usd=float(input("Enter your amount in USD: "))
+def conversion(amount):
+    api_url = "https://api.exchangerate-api.com/v4/latest/USD"
+    response_Data=requests.get(api_url)
+    data=response_Data.json()
+    rate=data["rates"]["INR"]
+   
+    print(f"Today's rate is: {rate}$ per 1 INR")
+    value=amount*rate
+    return value
+total_value=conversion(usd)
+print(f"Total value for {usd}$ is: ",total_value,"INR")
